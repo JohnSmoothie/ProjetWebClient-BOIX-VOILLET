@@ -5,7 +5,7 @@ $(document).ready(function() {
   var nbPhotos = $("#nbPhotos");
 
 
-  $('table').hide();
+  $('#VueTab').hide();
   var lastTab = null;
   $(".onglets a").each(function(index, elt) {
       $(elt).click(function(event) {
@@ -37,8 +37,7 @@ $(document).ready(function() {
         par_page : $(nbPhotos).val(),
         nojsoncallback : 1
       }
-
-    });
+  });
 
     ajax.done(function(codeHtmlSucces){
       console.log(codeHtmlSucces);
@@ -47,6 +46,7 @@ $(document).ready(function() {
     ajax.fail(function(data){
       console.log("Désolé, une erreure est survenue");
       console.log(data);
+    });
     });
 
     var inputCommune = $("#ville");
