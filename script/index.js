@@ -3,8 +3,7 @@ $(document).ready(function() {
   var apiKey = "45074180ed9c766da6cdd745043f1cdc";
 
   var form = $("#form");
-  var ville = $("#ville");
-  var nbPhotos = $("#nbPhotos");
+
 
 
   $('#VueTab').hide();
@@ -24,6 +23,8 @@ $(document).ready(function() {
   });
 
   $(form).submit(function(event){
+    var ville = $("#ville");
+    var nbPhotos = $("#nbPhotos");
     event.preventDefault();
     console.log($(nbPhotos).val());
     console.log($(ville).val());
@@ -36,27 +37,45 @@ $(document).ready(function() {
         api_key : apiKey,
         tags : $(ville).val(),
         format : 'json',
-        par_page : $(nbPhotos).val(),
+        per_page : $(nbPhotos).val(),
         nojsoncallback : 1
       }
-  });
+    });
 
     ajax.done(function(res){
       console.log(res);
       $("#listePhoto").empty();
       $(res.photos.photo).each(function(index, elt){
         console.log(this);
-        var lien = "https://farm"+this.farm+".staticflickr.com/"+this.server+"/"+this.id+"_"+this.secret+".jpg";
+        var id = this.id;
+        var secret = this.secret;
+        var lien = "https://farm"+this.farm+".staticflickr.com/"+this.server+"/"+id+"_"+secret+".jpg";
+        //pour la vue Photo
         $("#listePhoto").append("<li><img src=\""+lien+"\"/></li>");
+        //pour la vue Tableau
+        var ajaxTab = $.ajax({
+          url : urlFlickr,
+          method : 'GET',
+          data : {
+            method : 'flickr.photos.getInfo',
+            api_key : apiKey,
+            photo_id : id,
+            secret : secret,
+            format : 'json',
+            nojsoncallback : 1
+          }
+
+        });
+
+        ajaxTab.done(function(resTab) {
+          
+        })
       });
-    });
 
     ajax.fail(function(data){
       console.log("Désolé, une erreure est survenue");
       console.log(data);
     });
-    });
-
     });
 
     var inputCommune = $("#ville");
