@@ -1,0 +1,112 @@
+body {
+    font-family: 'Merriweather', Times, serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px 3px #333;
+}
+
+h2 {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px 3px #333;
+}
+
+h3 {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+h4 {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+h5 {
+    display: inline-block;
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-bottom: 1px dotted #666;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 20px;
+    text-align: justify;
+
+}
+
+#header {
+    padding: 50px;
+    background-color: lightskyblue;
+}
+
+#formulaire {
+    text-align: center;
+    padding: 70px;
+    background-color: aliceblue;
+}
+
+#nav {
+    text-align: center;
+    background-color: beige;
+    margin-left: 42%;
+    margin-right: 42%;
+    padding: 1px;
+}
+
+.onglets {
+    list-style-type:none;
+    overflow:hidden;
+    padding: 20px;
+}
+
+.onglets li {
+    float:none;
+    display:inline;
+}
+
+.onglets a {
+    background-color:#eee;
+    text-decoration:none;
+    height:1.5em;
+    line-height:1.5em;
+    font-weight:700;
+    border:2px solid #dedede;
+    position:relative;
+    float:none;
+    display:inline;
+    margin:0 0 0 6px;
+    padding:0.5em 1em;
+}
+
+.onglets a:hover {
+    background:#f8f8f8;
+}
+.onglets li a.active {
+    background:#fff;
+    border-bottom:2px solid #fff;
+    color:#DD4B39;
+}
+
+#corp {
+    text-align: center;
+}
