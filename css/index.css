@@ -68,15 +68,12 @@ p {
 #nav {
     text-align: center;
     background-color: beige;
-    margin-left: 42%;
-    margin-right: 42%;
     padding: 1px;
 }
 
 .onglets {
     list-style-type:none;
     overflow:hidden;
-    padding: 20px;
 }
 
 .onglets li {
