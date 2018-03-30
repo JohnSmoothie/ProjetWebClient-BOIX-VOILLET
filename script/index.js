@@ -39,7 +39,7 @@ $(document).ready(function() {
 
   $(form).submit(function(event){
     var ville = $("#ville");
-    var nbPhotos = $("#nbPhotos");
+    var nbPhotos = $(".nbPhotos");
     event.preventDefault();
     //console.log($(nbPhotos).val());
     //console.log($(ville).val());
@@ -52,7 +52,7 @@ $(document).ready(function() {
         api_key : apiKey,
         tags : $(ville).val(),
         format : 'json',
-        per_page : $(nbPhotos).val(),
+        per_page : $(nbPhotos).slider( "option", "value" ),
         nojsoncallback : 1
       }
     });
@@ -68,56 +68,56 @@ $(document).ready(function() {
       }
       else
       {
-      $("#listePhoto").empty();
-      $("#VueTab").empty();
-      $(res.photos.photo).each(function(index, elt){
-        //console.log(this);
-        var id = this.id;
-        var secret = this.secret;
-        var lien = "https://farm"+this.farm+".staticflickr.com/"+this.server+"/"+id+"_"+secret+".jpg";
-        //pour la vue Photo
-        $("#listePhoto").append("<span class=\"photos_VuePhoto\"><img id=\""+this.id+"\" src=\""+lien+"\"/></span>");
-        var photo_courante = $("#"+this.id);
-        //console.log($(photo_courante));
+        $("#listePhoto").empty();
+        $("#VueTab").empty();
+        $(res.photos.photo).each(function(index, elt){
+          //console.log(this);
+          var id = this.id;
+          var secret = this.secret;
+          var lien = "https://farm"+this.farm+".staticflickr.com/"+this.server+"/"+id+"_"+secret+".jpg";
+          //pour la vue Photo
+          $("#listePhoto").append("<span class=\"photos_VuePhoto\"><img id=\""+this.id+"\" src=\""+lien+"\"/></span>");
+          var photo_courante = $("#"+this.id);
+          //console.log($(photo_courante));
 
-        //pour la vue Tableau
-        var ajaxTab = $.ajax({
-          url : urlFlickr,
-          method : 'GET',
-          data : {
-            method : 'flickr.photos.getInfo',
-            api_key : apiKey,
-            photo_id : id,
-            secret : secret,
-            format : 'json',
-            nojsoncallback : 1
-          }
+          //pour la vue Tableau
+          var ajaxTab = $.ajax({
+            url : urlFlickr,
+            method : 'GET',
+            data : {
+              method : 'flickr.photos.getInfo',
+              api_key : apiKey,
+              photo_id : id,
+              secret : secret,
+              format : 'json',
+              nojsoncallback : 1
+            }
 
-        });
+          });
 
-        ajaxTab.done(function(resTab) {
-          //console.log(resTab);
-          var date = resTab.photo.dates.taken;
-          var nom = resTab.photo.title._content;
-          var pseudo = resTab.photo.owner.username;
-          $("#VueTab").append("<tr><td><img src=\""+lien+"\"/></td><td>"+nom+"</td><td>"+pseudo+"</td><td>"+date+"</td></tr>");
+          ajaxTab.done(function(resTab) {
+            //console.log(resTab);
+            var date = resTab.photo.dates.taken;
+            var nom = resTab.photo.title._content;
+            var pseudo = resTab.photo.owner.username;
+            $("#VueTab").append("<tr><td><img src=\""+lien+"\"/></td><td>"+nom+"</td><td>"+pseudo+"</td><td>"+date+"</td></tr>");
 
-          var afficherModale = " <div class=\"element_afficherModale\" ><img src=\""+lien+"\"/> <div> <b> Nom: </b>"+nom+"</div><div> <b> Photographe: </b>"+pseudo+"</div><div> <b> Date: </b>"+date+"</div></div> "
-          $(photo_courante).click(function() {
-            $(modal).empty();
-            $(modal).dialog( "option", "height", 600 );
-            $(modal).dialog( "option", "width", 1000 );
-            $(modal).append(afficherModale);
-            $(modal).dialog( "open" );
+            var afficherModale = " <div class=\"element_afficherModale\" ><img src=\""+lien+"\"/> <div> <b> Nom: </b>"+nom+"</div><div> <b> Photographe: </b>"+pseudo+"</div><div> <b> Date: </b>"+date+"</div></div> "
+            $(photo_courante).click(function() {
+              $(modal).empty();
+              $(modal).dialog( "option", "height", 600 );
+              $(modal).dialog( "option", "width", 1000 );
+              $(modal).append(afficherModale);
+              $(modal).dialog( "open" );
+            });
           });
         });
-      });
 
-      ajax.fail(function(data){
-        //console.log("Désolé, une erreure est survenue");
-        //console.log(data);
-      });
-    }
+        ajax.fail(function(data){
+          //console.log("Désolé, une erreure est survenue");
+          //console.log(data);
+        });
+      }
     });
 
   });
@@ -181,40 +181,52 @@ $(document).ready(function() {
     $(".modalbg").css("display", "none");
   });
 
-$(".icone").click(function(){
+  $(".icone").click(function(){
 
-  recherche = 'commune='+inputCommune.val()+"&maxRows=10";
-  //console.log(recherche);
-  var commune = inputCommune.val();
-  var communeBonne = false;
+    recherche = 'commune='+inputCommune.val()+"&maxRows=10";
+    //console.log(recherche);
+    var commune = inputCommune.val();
+    var communeBonne = false;
 
-  var ajax = $.ajax({
-    url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',  // Ressource ciblée coté serveur
-    type : 'GET',
-    data : recherche,//$_GET['nom'] au niveau serveur
-  });
+    var ajax = $.ajax({
+      url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',  // Ressource ciblée coté serveur
+      type : 'GET',
+      data : recherche,//$_GET['nom'] au niveau serveur
+    });
 
-  ajax.done(function(codeHtmlSucces){
-    //console.log(codeHtmlSucces);
-    $(codeHtmlSucces).each(function(index, elt){
-      console.log(commune+" égal à "+elt.Ville+" ?");
-      if (commune == elt.Ville) {
-        console.log("oui");
-        communeBonne = true;
+    ajax.done(function(codeHtmlSucces){
+      //console.log(codeHtmlSucces);
+      $(codeHtmlSucces).each(function(index, elt){
+        console.log(commune+" égal à "+elt.Ville+" ?");
+        if (commune == elt.Ville) {
+          console.log("oui");
+          communeBonne = true;
+        }
+      });
+
+      if (communeBonne == true) {
+        $(".errMessage").hide();
+        $(form).submit();
+      }
+      else{
+        $(".errMessage").show();
       }
     });
 
-    if (communeBonne == true) {
-      $(".errMessage").hide();
-      $(form).submit();
-    }
-    else{
-      $(".errMessage").show();
-    }
+
   });
 
-
-});
+  var handle = $( "#custom-handle" );
+  $("#slider").slider({
+    create: function() {
+      handle.text( $( this ).slider( "value" ) );
+    },
+    slide: function( event, ui ) {
+      handle.text( ui.value );
+    },
+    max : 100,
+    min : 1
+  });
   /*loupe
   $("td.tab-chiffre").each(function(index, elt) {
   $(elt).mouseenter(function(){

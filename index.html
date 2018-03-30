@@ -25,60 +25,63 @@
       <span class="icone ui-icon ui-icon-circle-triangle-e"></span>
       <span class="errMessage"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Veuillez entrer une ville reconnue ! </span>
     </br></br>
-      <label>Nombre de photos :</label>
-      <select id="nbPhotos">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
-      <br><br>
-      <!-- <input type="submit" value="Afficher les photos"/> -->
+    <label>Nombre de photos :</label>
+    <!--<select id="nbPhotos">
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select> -->
+  <div id="slider" class="nbPhotos">
+    <div id="custom-handle" class="ui-slider-handle"></div>
+  </div>
+  <br><br>
+  <!-- <input type="submit" value="Afficher les photos"/> -->
 
-    </form>
+</form>
+</div>
+
+<div id="nav">
+  <ul class="onglets">
+    <li><a href="#VuePhoto">Vue Photo</a></li>
+    <li><a href="#VueTab">Vue Tableau</a></li>
+  </ul>
+</div>
+
+<div id="VuePhoto">
+  <div id="listePhoto">
   </div>
 
-  <div id="nav">
-    <ul class="onglets">
-      <li><a href="#VuePhoto">Vue Photo</a></li>
-      <li><a href="#VueTab">Vue Tableau</a></li>
-    </ul>
-  </div>
-
-  <div id="VuePhoto">
-    <div id="listePhoto">
-    </div>
 
 
+  <div id="dialog" title="Dialog Title"></div>
+  <div class="modalbg"></div>
 
-    <div id="dialog" title="Dialog Title"></div>
-    <div class="modalbg"></div>
+</div>
 
-  </div>
+<table id="VueTab">
+  <tr>
+    <th>
+      photo
+    </th>
+    <th>
+      nom
+    </th>
+    <th>
+      heure de prise de vue
+    </th>
+    <th>
+      id photographe
+    </th>
+  </tr>
 
-  <table id="VueTab">
-    <tr>
-      <th>
-        photo
-      </th>
-      <th>
-        nom
-      </th>
-      <th>
-        heure de prise de vue
-      </th>
-      <th>
-        id photographe
-      </th>
-    </tr>
-
-  </table>
+</table>
 
 
-  <footer>
-  </footer>
+<footer>
+</footer>
 
 </body>
 </html>
