@@ -2,11 +2,8 @@ $(document).ready(function() {
   var urlFlickr = "https://api.flickr.com/services/rest/";
   var apiKey = "45074180ed9c766da6cdd745043f1cdc";
 
-<<<<<<< HEAD
-  var form = $("#form");
-=======
->>>>>>> b8b61e4612b9da3df87fd70ea585a355698ac846
 
+  var form = $("#form");
 
 
   $('#VueTab').hide();
@@ -49,6 +46,7 @@ $(document).ready(function() {
     ajax.done(function(res){
       console.log(res);
       $("#listePhoto").empty();
+      $("#VueTab").empty();
       $(res.photos.photo).each(function(index, elt){
         console.log(this);
         var id = this.id;
@@ -77,15 +75,21 @@ $(document).ready(function() {
         });
 
         ajaxTab.done(function(resTab) {
-
-        })
+          console.log(resTab);
+          var date = resTab.photo.dates.taken;
+          var nom = resTab.photo.titlecontent;
+          var pseudo = resTab.photo.owner.username;
+          $("#VueTab").append("<tr><td><img src=\""+lien+"\"/></td><td>"+nom+"</td><td>"+pseudo+"</td><td>"+date+"</td></tr>");
+        });
       });
 
-    ajax.fail(function(data){
-      console.log("Désolé, une erreure est survenue");
-      console.log(data);
+      ajax.fail(function(data){
+        console.log("Désolé, une erreure est survenue");
+        console.log(data);
+      });
     });
-    });
+
+  });
 
   var inputCommune = $("#ville");
 
