@@ -2,12 +2,7 @@ $(document).ready(function() {
   var urlFlickr = "https://api.flickr.com/services/rest/";
   var apiKey = "45074180ed9c766da6cdd745043f1cdc";
 
-<<<<<<< HEAD
   var form = $("#form");
-=======
->>>>>>> b8b61e4612b9da3df87fd70ea585a355698ac846
-
-
 
   $('#VueTab').hide();
   var lastTab = null;
@@ -25,7 +20,6 @@ $(document).ready(function() {
     })
   });
 
-  var form = $("#form");
   $(form).submit(function(event){
     var ville = $("#ville");
     var nbPhotos = $("#nbPhotos");
@@ -78,78 +72,78 @@ $(document).ready(function() {
 
         ajaxTab.done(function(resTab) {
 
-        })
-      });
-
-    ajax.fail(function(data){
-      console.log("Désolé, une erreure est survenue");
-      console.log(data);
-    });
-    });
-
-  var inputCommune = $("#ville");
-
-  console.log($("#ville"));
-
-  $("#ville").autocomplete({
-
-    source: function(request, response){
-
-      recherche = 'commune='+inputCommune.val()+"&maxRows=10";
-      console.log(recherche);
-
-      var ajax = $.ajax({
-        url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',  // Ressource ciblée coté serveur
-        type : 'GET',
-        data : recherche,//$_GET['nom'] au niveau serveur
-      });
-
-      ajax.done(function(codeHtmlSucces){
-        console.log(codeHtmlSucces);
-        map = $.map(codeHtmlSucces, function(n, i){
-          ville = n.Ville;
-          label = n.Ville;
-          value = n.Ville;
-          return {ville, label, value};
         });
-        console.log(map);
-        return response(map);
       });
-    }
 
-  });
+      ajax.fail(function(data){
+        console.log("Désolé, une erreure est survenue");
+        console.log(data);
+      });
+    });
 
-  $("#ville").autocomplete( "option", "minLength", 3 );
+    var inputCommune = $("#ville");
 
-  $("#ville").on( "autocompleteselect", function( event, ui ) {
-    event.preventDefault();
+    console.log($("#ville"));
 
-    console.log(ui);
-    console.log(ui.item.label);
-    console.log(ui.item.value);
-    console.log($(this));
+    $("#ville").autocomplete({
 
-    inputCommune.val(ui.item.ville);
+      source: function(request, response){
+
+        recherche = 'commune='+inputCommune.val()+"&maxRows=10";
+        console.log(recherche);
+
+        var ajax = $.ajax({
+          url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',  // Ressource ciblée coté serveur
+          type : 'GET',
+          data : recherche,//$_GET['nom'] au niveau serveur
+        });
+
+        ajax.done(function(codeHtmlSucces){
+          console.log(codeHtmlSucces);
+          map = $.map(codeHtmlSucces, function(n, i){
+            ville = n.Ville;
+            label = n.Ville;
+            value = n.Ville;
+            return {ville, label, value};
+          });
+          console.log(map);
+          return response(map);
+        });
+      }
+
+    });
+
+    $("#ville").autocomplete( "option", "minLength", 3 );
+
+    $("#ville").on( "autocompleteselect", function( event, ui ) {
+      event.preventDefault();
+
+      console.log(ui);
+      console.log(ui.item.label);
+      console.log(ui.item.value);
+      console.log($(this));
+
+      inputCommune.val(ui.item.ville);
 
 
-  });
+    });
 
 
 
-  $(".modal_close").click(function() {
-    $(".modal").css("display", "none");
-    $(".modalbg").css("display", "none");
-  });
+    $(".modal_close").click(function() {
+      $(".modal").css("display", "none");
+      $(".modalbg").css("display", "none");
+    });
 
-  $(".modalbg").click(function() {
-    $(".modal").css("display", "none");
-    $(".modalbg").css("display", "none");
-  });
+    $(".modalbg").click(function() {
+      $(".modal").css("display", "none");
+      $(".modalbg").css("display", "none");
+    });
 
-  /*loupe
-  $("td.tab-chiffre").each(function(index, elt) {
-  $(elt).mouseenter(function(){
-  $('#loupe').text($(this).text());
-})
+    /*loupe
+    $("td.tab-chiffre").each(function(index, elt) {
+    $(elt).mouseenter(function(){
+    $('#loupe').text($(this).text());
+  })
 })*/
 });
