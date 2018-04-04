@@ -25,7 +25,6 @@
       <label>Quelle ville vous intéresse</label>
       <input type="text" id="ville"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <span class="icone ui-icon ui-icon-circle-triangle-e"></span>
-      <span class="errMessage"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Veuillez entrer une ville reconnue ! </span>
     </br></br>
     <label>Nombre de photos :</label>
     <!--<select id="nbPhotos">
@@ -40,6 +39,9 @@
     <div id="custom-handle" class="ui-slider-handle"></div>
   </div>
   <br><br>
+  <span class="errMessage"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Veuillez entrer une ville reconnue ! </span>
+  <br/>
+  <br/>
   <!-- <input type="submit" value="Afficher les photos"/> -->
 
 </form>
@@ -55,36 +57,29 @@
 <div id="VuePhoto">
   <div id="listePhoto">
   </div>
-
-
-
   <div id="dialog" title="Dialog Title"></div>
   <div class="modalbg"></div>
+</div>
 
-          </td>
-        </tr>
-        </table>
-        <table id="VueTab">
-          <thead>
-            <tr>
-              <th>
-                photo
-              </th>
-              <th>
-                nom
-              </th>
-              <th>
-                id photographe
-              </th>
-              <th>
-                heure de prise de vue
-              </th>
-            </tr>
-          </thead>
-          <tbody id="VueTabBody">
-          </tbody>
-
-
+<table id="VueTab">
+    <thead>
+      <tr>
+        <th>
+          photo
+        </th>
+        <th>
+          nom
+        </th>
+        <th>
+          id photographe
+        </th>
+        <th>
+          heure de prise de vue
+        </th>
+      </tr>
+    </thead>
+    <tbody id="VueTabBody">
+    </tbody>
 </table>
 
 

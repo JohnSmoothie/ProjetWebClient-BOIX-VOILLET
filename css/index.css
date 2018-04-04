@@ -145,10 +145,10 @@ p {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
 #vueTab {
   border
-=======
+}
+
 .photos_VuePhoto {
   margin: 15px;
 }
@@ -200,5 +200,4 @@ p {
   margin-top: -.8em;
   text-align: center;
   line-height: 1.6em;
->>>>>>> c64231bc4a515e9e6b3753f53144eb3c0319b97f
 }
