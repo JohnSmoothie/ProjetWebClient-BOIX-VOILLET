@@ -13,59 +13,53 @@
     <title>Mini projet Web Client</title>
 </head>
 <body>
-    <div id="header">
+  <div id="header">
     <div id="marque">
-        <h1>Mini-projet Programmation Web Client Riche</h1>
-        <h2>Par Victor BOIX et Rémy Voillet</h2>
+      <h1>Mini-projet Programmation Web Client Riche</h1>
+      <h2>Par Victor BOIX et Rémy Voillet</h2>
     </div>
 
-    </div>
-    <div id="formulaire">
-      <form id="form">
-        <label>Quelle ville vous intéresse</label>
-        <input type="text" id="ville"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>Nombre de photos :</label>
-        <select id="nbPhotos">
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="40">40</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Afficher les photos"/>
-      </form>
-    </div>
+  </div>
+  <div id="formulaire">
+    <form id="form">
+      <label>Quelle ville vous intéresse</label>
+      <input type="text" id="ville"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="icone ui-icon ui-icon-circle-triangle-e"></span>
+      <span class="errMessage"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Veuillez entrer une ville reconnue ! </span>
+    </br></br>
+    <label>Nombre de photos :</label>
+    <!--<select id="nbPhotos">
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select> -->
+  <div id="slider" class="nbPhotos">
+    <div id="custom-handle" class="ui-slider-handle"></div>
+  </div>
+  <br><br>
+  <!-- <input type="submit" value="Afficher les photos"/> -->
 
-    <div id="nav">
-        <ul class="onglets">
-            <li><a href="#VuePhoto">Vue Photo</a></li>
-            <li><a href="#VueTab">Vue Tableau</a></li>
-        </ul>
-    </div>
+</form>
+</div>
 
-        <table id="VuePhoto">
-          <tr>
-            <td>
-              <ul id="listePhoto">
-              </ul>
-            </td>
-          </tr>
+<div id="nav">
+  <ul class="onglets">
+    <li><a href="#VuePhoto">Vue Photo</a></li>
+    <li><a href="#VueTab">Vue Tableau</a></li>
+  </ul>
+</div>
+
+<div id="VuePhoto">
+  <div id="listePhoto">
+  </div>
 
 
-              <div class="modal">
-                <span class="modal_close">&#215;</span>
-                <table class="table-modal">
-                  <tr class="tr-modal">
-                    <td class="td-modal">
-                    </td>
-                    <td class="td-modal">
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="modalbg"></div>
+
+  <div id="dialog" title="Dialog Title"></div>
+  <div class="modalbg"></div>
 
           </td>
         </tr>
@@ -91,11 +85,11 @@
           </tbody>
 
 
-        </table>
+</table>
 
 
-    <footer>
-    </footer>
+<footer>
+</footer>
 
 </body>
 </html>

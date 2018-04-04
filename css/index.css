@@ -145,6 +145,60 @@ p {
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 #vueTab {
   border
+=======
+.photos_VuePhoto {
+  margin: 15px;
+}
+
+.ui-dialog {
+  position: fixed;
+}
+
+.element_afficherModale {
+  text-align: center;
+  height: 100%;
+}
+
+.element_afficherModale div {
+  width: 100%;
+  height: 5%;
+}
+
+.element_afficherModale img {
+  height : 85%;
+}
+
+.icone {
+  transform: scale(2);
+  font-size: 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.noResult{
+  color: black;
+  text-shadow: none;
+}
+
+.errMessage {
+  display: none;
+  color: red;
+}
+
+#slider{
+  display: inline-block;
+  width: 20%;
+}
+
+#custom-handle {
+  width: 3em;
+  height: 1.6em;
+  top: 50%;
+  margin-top: -.8em;
+  text-align: center;
+  line-height: 1.6em;
+>>>>>>> c64231bc4a515e9e6b3753f53144eb3c0319b97f
 }
