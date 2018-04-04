@@ -4,6 +4,14 @@ $(document).ready(function() {
 
 
   var form = $("#form");
+  var dataSet = [];
+  var dataSet2 = [];
+  var dataTable = false;
+  var nbAjaxComplete = 0;
+  var nbAjaxComplete2 = 0;
+
+
+
 
 
   $('#VueTab').hide();
@@ -44,9 +52,12 @@ $(document).ready(function() {
     });
 
     ajax.done(function(res){
+      nbAjaxComplete = 0;
+      nbAjaxComplete2 = 0;
       console.log(res);
       $("#listePhoto").empty();
-      $("#VueTab").empty();
+      $("#VueTabBody").empty();
+      nbAjaxComplete2 = $(res.photos.photo).length;
       $(res.photos.photo).each(function(index, elt){
         console.log(this);
         var id = this.id;
@@ -76,19 +87,41 @@ $(document).ready(function() {
 
         ajaxTab.done(function(resTab) {
           console.log(resTab);
+          dataSet2 = [];
+          var img = "<img src=\""+lien+"\"/>"
           var date = resTab.photo.dates.taken;
-          var nom = resTab.photo.titlecontent;
+          var nom = resTab.photo.title._content;
           var pseudo = resTab.photo.owner.username;
-          $("#VueTab").append("<tr><td><img src=\""+lien+"\"/></td><td>"+nom+"</td><td>"+pseudo+"</td><td>"+date+"</td></tr>");
-        });
-      });
 
-      ajax.fail(function(data){
-        console.log("Désolé, une erreure est survenue");
-        console.log(data);
+          dataSet2.push(img, nom, pseudo, date);
+          dataSet.push(dataSet2);
+          console.log(dataSet);
+
+          //$("#VueTabBody").append("<tr><td><img src=\""+lien+"\"/></td><td>"+nom+"</td><td>"+pseudo+"</td><td>"+date+"</td></tr>");
+        });
+
       });
     });
 
+    ajax.fail(function(data){
+      console.log("Désolé, une erreure est survenue");
+      console.log(data);
+    });
+
+  });
+
+  $(document).ajaxComplete(function() {
+    nbAjaxComplete = nbAjaxComplete + 1;
+    console.log( "Triggered ajaxComplete handler." );
+    if(nbAjaxComplete == nbAjaxComplete2)
+    if(dataTable == false) {
+      dataTable = true;
+      $('#VueTab').dataTable( {
+        data: dataSet,
+        searching : false,
+        scrollY: 400
+      } );
+    }
   });
 
   var inputCommune = $("#ville");
