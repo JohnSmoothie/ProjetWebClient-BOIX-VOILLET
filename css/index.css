@@ -150,7 +150,16 @@ p {
 }
 
 .photos_VuePhoto {
-  margin: 15px;
+  margin: 15px 35%;
+  vertical-align: middle;
+  width: auto;
+  display:inline-block;
+  width: 30%;
+  cursor:pointer;
+}
+
+.photos_VuePhoto img{
+  width : 100%;
 }
 
 .ui-dialog {

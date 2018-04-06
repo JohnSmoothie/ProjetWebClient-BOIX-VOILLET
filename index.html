@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
-    <script type="text/javascript" src="script/index.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-    <title>Mini projet Web Client</title>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+  <script type="text/javascript" src="script/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  <title>Mini projet Web Client</title>
 </head>
 <body>
   <div id="header">
@@ -27,22 +27,16 @@
       <span class="icone ui-icon ui-icon-circle-triangle-e"></span>
     </br></br>
     <label>Nombre de photos :</label>
-    <!--<select id="nbPhotos">
-    <option value="10">10</option>
-    <option value="20">20</option>
-    <option value="30">30</option>
-    <option value="40">40</option>
-    <option value="50">50</option>
-    <option value="100">100</option>
-  </select> -->
   <div id="slider" class="nbPhotos">
     <div id="custom-handle" class="ui-slider-handle"></div>
-  </div>
+  </div></br></br>
+
+  <label>Photos postée après le : <input type="text" id="calendar" placeholder="jj/mm/aaaa"> (optionnel)</label>
+
   <br><br>
   <span class="errMessage"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Veuillez entrer une ville reconnue ! </span>
   <br/>
   <br/>
-  <!-- <input type="submit" value="Afficher les photos"/> -->
 
 </form>
 </div>
@@ -50,7 +44,7 @@
 <div id="nav">
   <ul class="onglets">
     <li><a href="#VuePhoto">Vue Photo</a></li>
-    <li><a href="#VueTab">Vue Tableau</a></li>
+    <li><a href="#VueTableau">Vue Tableau</a></li>
   </ul>
 </div>
 
@@ -61,7 +55,8 @@
   <div class="modalbg"></div>
 </div>
 
-<table id="VueTab">
+<div id="VueTableau">
+  <table id="VueTab">
     <thead>
       <tr>
         <th>
@@ -80,8 +75,8 @@
     </thead>
     <tbody id="VueTabBody">
     </tbody>
-</table>
-
+  </table>
+</div>
 
 <footer>
 </footer>
